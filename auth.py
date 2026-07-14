@@ -11,3 +11,14 @@ def login_required(func):
         return func()
     
     return wrappper
+
+def role_required(role):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args,**kwargs):
+            if session.get("role")!=role:
+                return redirect(url_for('login_page'))
+            return func(*args,**kwargs)
+
+        return wrapper
+    return decorator

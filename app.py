@@ -1,6 +1,6 @@
 from flask import (Flask,request,render_template,redirect,url_for,session)
 from databse import database
-from auth import login_required
+from auth import login_required,role_required
 
 app=Flask(__name__)
 app.secret_key='n1t16xsh'
@@ -19,7 +19,7 @@ def register_page():
         roll_number = request.form.get("roll_number")
         department = request.form.get("department")
         year = request.form.get("year")
-        role = "student"
+        role = req.form.get("role")
         response=db.register_user(name,email,password,role,roll_number,department,year)
         if response :
             return redirect(url_for('login_page'))
@@ -36,6 +36,8 @@ def login_page():
         user=db.login_user(email,password)
         if user:
             session["user_id"]= user[0]
+            session["role"]=user[4]
+            session["name"]=user[1]
             return redirect(url_for('dashboard'))
         else:
             return render_template('login.html',message='email or password is incorrect')
@@ -49,8 +51,9 @@ def logout():
 
 @app.route('/dashboard')
 @login_required
+@role_required('admin')
 def dashboard():
-    return render_template('home.html')
+    return render_template('dashboard.html',name=session["name"],role=session["role"])
 
 if __name__=='__main__':
     app.run(debug=True)

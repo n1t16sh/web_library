@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <div class="container-fluid">
+
+        <!-- Logo -->
+        <a class="navbar-brand fw-bold" href="/dashboard">
+            📚 Library Management
+        </a>
+
+        <!-- Search Bar -->
+        <form class="d-flex w-50">
+            <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search books..."
+            >
+            <button class="btn btn-outline-light">
+                Search
+            </button>
+        </form>
+
+        <!-- User Info -->
+        <div class="d-flex align-items-center">
+
+            <span class="text-white me-3">
+                Welcome, <strong>{{ session["name"] }}</strong>
+            </span>
+
+            <a href="/logout" class="btn btn-danger">
+                Logout
+            </a>
+
+        </div>
+
+    </div>
+</nav>
