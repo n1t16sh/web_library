@@ -1,83 +1,25 @@
-<div class="bg-dark text-white vh-100 p-3">
+<aside class="sidebar">
+<h3>Library</h3>
+<ul>
+<li><a href="/dashboard">🏠 Dashboard</a></li>
 
-    <h5 class="text-center mb-4">
-        Dashboard
-    </h5>
+{% if role=="student" %}
+<li><a href="/books">📚 Browse Books</a></li>
+<li><a href="/my_books">📖 My Books</a></li>
+<li><a href="/marketplace">🛒 Marketplace</a></li>
+<li><a href="/profile">👤 Profile</a></li>
 
-    {% if role=="student" %}
+{% elif role=="librarian" %}
+<li><a href="/add_book">➕ Add Book</a></li>
+<li><a href="/manage_books">📚 Manage Books</a></li>
+<li><a href="/issue_book">📖 Issue Book</a></li>
+<li><a href="/return_book">↩ Return Book</a></li>
 
-        <a href="/dashboard" class="btn btn-dark w-100 text-start mb-2">
-            🏠 Dashboard
-        </a>
-
-        <a href="/books" class="btn btn-dark w-100 text-start mb-2">
-            📚 Browse Books
-        </a>
-
-        <a href="/my_books" class="btn btn-dark w-100 text-start mb-2">
-            📖 My Books
-        </a>
-
-        <a href="/marketplace" class="btn btn-dark w-100 text-start mb-2">
-            🛒 Marketplace
-        </a>
-
-        <a href="/profile" class="btn btn-dark w-100 text-start mb-2">
-            👤 Profile
-        </a>
-
-    {% elif role =="librarian" %}
-
-        <a href="/dashboard" class="btn btn-dark w-100 text-start mb-2">
-            🏠 Dashboard
-        </a>
-
-        <a href="/add_book" class="btn btn-dark w-100 text-start mb-2">
-            ➕ Add Book
-        </a>
-
-        <a href="/manage_books" class="btn btn-dark w-100 text-start mb-2">
-            📚 Manage Books
-        </a>
-
-        <a href="/issue_book" class="btn btn-dark w-100 text-start mb-2">
-            📖 Issue Book
-        </a>
-
-        <a href="/return_book" class="btn btn-dark w-100 text-start mb-2">
-            ↩ Return Book
-        </a>
-
-        <a href="/marketplace" class="btn btn-dark w-100 text-start mb-2">
-            🛒 Marketplace
-        </a>
-
-    {% elif role=="admin" %}
-
-        <a href="/dashboard" class="btn btn-dark w-100 text-start mb-2">
-            🏠 Dashboard
-        </a>
-
-        <a href="/users" class="btn btn-dark w-100 text-start mb-2">
-            👥 Manage Users
-        </a>
-
-        <a href="/library" class="btn btn-dark w-100 text-start mb-2">
-            📚 Library
-        </a>
-
-        <a href="/create_librarian" class="btn btn-dark w-100 text-start mb-2">
-            👨‍💼 Create Librarian
-        </a>
-
-        <a href="/reports" class="btn btn-dark w-100 text-start mb-2">
-            📊 Reports
-        </a>
-
-        <a href="/settings" class="btn btn-dark w-100 text-start mb-2">
-            ⚙ Settings
-        </a>
-
-    {% endif %}
-
-</div>
+{% elif role=="admin" %}
+<li><a href="/users">👥 Users</a></li>
+<li><a href="/library">📚 Library</a></li>
+<li><a href="/reports">📊 Reports</a></li>
+<li><a href="/settings">⚙ Settings</a></li>
+{% endif %}
+</ul>
+</aside>
